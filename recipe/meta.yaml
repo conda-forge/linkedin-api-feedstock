@@ -1,5 +1,5 @@
 {% set name = "linkedin-api" %}
-{% set version = "2.2.0" %}
+{% set version = "2.2.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/linkedin_api-{{ version }}.tar.gz
-  sha256: a7be3dc950820b08b1eee0cf3517ce36cd47cb61836e1fb8c40115854acf84b5
+  sha256: 12b1276c15fdb005318055a76b16945205de1ec88bcbc97d017c3a57dbaabbd5
 
 build:
   number: 0
