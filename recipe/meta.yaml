@@ -1,6 +1,6 @@
 {% set name = "linkedin-api" %}
 {% set version = "2.3.1" %}
-
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
