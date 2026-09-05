@@ -1,0 +1,48 @@
+schema_version: 1
+
+context:
+  name: linkedin-api
+  version: "2.3.1"
+  python_min: "3.10"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/linkedin_api-${{ version }}.tar.gz
+  sha256: 07ab020440a049e48e6c55d6b61fbab049480225ec8a82f14e5c077ae7ecc984
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - poetry
+    - python 3.10.*
+  run:
+    - python >=${{ python_min }}
+    - requests
+    - beautifulsoup4
+    - lxml
+
+tests:
+  - python:
+      imports:
+        - linkedin_api
+        - linkedin_api.utils
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Python wrapper for the Linkedin API
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/tomquirk/linkedin-api
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
