@@ -16,18 +16,18 @@ source:
 build:
   number: 2
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
     - poetry
-    - python 3.10.*
+    - python ${{ python_min }}.*
   run:
     - python >=${{ python_min }}
     - requests
     - beautifulsoup4
-    - lxml
+    - lxml <6.0.0,>=5.3.0
 
 tests:
   - python:
@@ -35,7 +35,9 @@ tests:
         - linkedin_api
         - linkedin_api.utils
       pip_check: true
-      python_version: ${{ python_min }}
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
 about:
   summary: Python wrapper for the Linkedin API
